@@ -5,29 +5,32 @@ var app       = express();
 
 app.listen(3012);
 
-nunjucks.configure('views', {
+nunjucks.configure('app/landing', {
   autoescape: true,
   express   : app
 });
 
-app.use(express.static('public'))
+app.use(express.static('app'))
 
-app.get('/', function(req, res) {
-  res.render('landing/index.html');
+const dirLanding = 'app/landing';
+app.get('/', (req, res) => {
+  res.render('index.html', { root: dirLanding });
 });
 
+
 app.get('/contact', function(req, res) {
-  res.render('landing/contact.html');
+  res.render('contact.html', { root: dirLanding });
 });
 
 app.get('/about', function(req, res) {
-  res.render('landing/about.html');
+  res.render('about.html', { root: dirLanding });
 });
 
 app.get('/showcase', function(req, res) {
-  res.render('landing/showcase.html');
+  res.render('showcase.html', { root: dirLanding });
 });
 
 app.get('/careers', function(req, res) {
-  res.render('landing/careers.html');
+  res.render('careers.html', { root: dirLanding });
 });
+
