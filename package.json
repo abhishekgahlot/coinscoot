@@ -9,6 +9,8 @@
   "author": "Abhishek Gahlot",
   "license": "ISC",
   "dependencies": {
-    "expressjs": "^1.0.1"
+    "express": "^4.16.2",
+    "expressjs": "^1.0.1",
+    "nunjucks": "^3.0.1"
   }
 }
