@@ -10,7 +10,8 @@ nunjucks.configure('app', {
   express   : app
 });
 
-app.use(express.static('app/public'))
+app.use("/admin", express.static('app/admin/public'))
+app.use("/landing", express.static('app/landing/public'))
 
 
 app.get('/', (req, res) => {
