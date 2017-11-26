@@ -1,0 +1,51 @@
+//
+// Logo & Nav Menu
+// --------------------------
+#logo_wrapper {
+  height: 65px;
+  padding: 0;
+  margin: 0;
+	display: inline-block;
+	float:left;
+	width: 240px;
+	  @include transition( 'all', '250ms');
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      .logo {
+        float: none;
+        padding: 0;
+        height: auto;
+        img {
+          position: absolute;
+          top: 25px;
+          left: 13px;
+					width: 35px;
+					height: 20px;
+        }
+      }
+      h1.brand-text {
+        font-size: em(20);
+        padding: 5px 0 0 60px;
+        letter-spacing: 0.07em;
+        font-weight: 300;
+        color:#fff;
+      }
+    }
+    li.app_menu-close {
+      float: right;
+      display: none;
+      padding:19px 20px;
+      a {
+        i {
+          font-size: 30px;
+          color: #fff;
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,18 @@
+[
+    "bower_components/jquery/dist/jquery.min.js",
+    "bower_components/js-cookie/src/js.cookie.js",
+    "bower_components/es6-promise/es6-promise.js",
+    "bower_components/js-storage/js.storage.js",
+    "bower_components/lodash/dist/lodash.min.js",
+    "bower_components/bootstrap/dist/js/bootstrap.js",
+    "bower_components/bootstrap/dist/css/bootstrap.css",
+    "bower_components/modernizr/modernizr.custom.js",
+    "bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css",
+    "bower_components/material-design-iconic-font/dist/fonts/*",
+    "bower_components/mdi/css/materialdesignicons.css",
+    "bower_components/mdi/fonts/*",
+    "bower_components/navgoco/src/jquery.navgoco.js",
+    "bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+    "bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css",
+    "bower_components/dropdown.js/jquery.dropdown.js"
+]

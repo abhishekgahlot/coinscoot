@@ -1,0 +1,648 @@
+//
+// Page Layout for Right Sidenavs
+// Page Layouts > Right Sidenav
+// layout-right-sidenav-v1.html
+// -----------------------------------------------------------------------------
+
+
+// layout-right-sidenav-v1.html
+// -----------------------------------------------------------------------------
+
+.rightnav_v1 {
+  #rightnav {
+    position: relative;
+    
+    .card {
+      .card-heading {
+        padding: 10px 10px 10px 0;
+        
+        .card-title {
+          text-transform: uppercase;
+          padding: 5px 0 5px 10px;
+          display: block;
+          font-size: 18px;
+          font-weight: 300;
+        }
+      }
+      
+      .card-body {
+        padding: 0 10px 0 0;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+}
+
+.rightnav_v1 {
+  .content-col-wrapper {
+    padding-right: 40px;
+  }
+  
+  .rightnav-col-wrapper {
+    padding-right: 0;
+    max-width: 250px;
+  }
+}
+@media (max-width : 1280px) {
+  .rightnav_v1 {
+    .content-col-wrapper {
+      width: 100%;
+      padding-right: 10px;
+    }
+    
+    #rightnav {
+      position: fixed;
+			overflow-y: auto;
+      width: 250px;
+      min-width: 250px;
+      max-width: 250px;
+      padding: 0;
+      right: -250px;
+      
+      .card {
+        .card-heading {
+          padding: 15px;
+          background: #e7eef3;
+          position: fixed;
+          width: 250px;
+          z-index: 50;
+          
+          .card-title {
+      
+            font-size: em(18);
+          }
+          
+          ul.card-actions li i {
+            font-size: 1.375em;
+          }
+        }
+        
+        .card-body {
+          padding: 20px 10px 50px;
+          margin: 0 10px 0 0;
+        }
+      }
+      
+      .nav-pills > li > a {
+        width: 100%;
+      }
+    }
+  }
+}
+@media (max-width : 992px) {
+  .rightnav_v1 {
+    #rightnav {
+      .sidebarnav-inner {
+        height: calc(100% - 150px);
+      }
+    }
+    
+    #content {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+    }
+  }
+}
+@media (max-width :767px) {
+  .rightnav_v1,
+  .rightnav_v2 {
+    #header_wrapper {
+      .breadcrumb {
+        display: none!important;
+      }
+    }
+    
+    #content {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+}
+// layout-right-sidenav-v2.html
+// -----------------------------------------------------------------------------
+
+.rightnav_v2 {
+  #rightnav {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+    height: 100%;
+    min-height: 100%;
+    float: right;
+    z-index: 1;
+    color: #627288;
+    
+    .form-group {
+      margin: 0;
+    }
+    //Sidebar Panel Card & Card Actions
+    .card {
+      background: transparent!important;
+      border-color: transparent;
+      box-shadow: none;
+      margin: 0 auto !important;
+      
+      .card-heading {
+        padding: 10px 0 0 25px !important;
+			
+        
+        h5 {
+          color: rgba(98,114,136,.8);
+          padding: 0;
+          margin: 0;
+          text-transform: uppercase;
+        }
+      }
+    }
+    
+    .card .card-body ul.card-actions.right,
+    .card .card-heading ul.card-actions.right {
+      right: 10px;
+      top: 8px;
+    }
+    
+    .nav.nav-tabs {
+      background: none;
+    }
+		.nav.nav-pills.nav-stacked{
+			padding: 20px;
+		}
+  }
+}
+
+.rightnav_v2.panel-lg {
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+}
+@media (max-width: 1280px) {
+  #app_wrapper {
+    #content_outer_wrapper {
+      right: 0 !important;
+      max-width: 100%!important;
+    }
+    
+    .rightnav_v2 {
+      #header h1 {
+        padding-right: 45px;
+      }
+      
+      #rightnav {
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+        right: -280px;
+        top: 65px;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        box-shadow: 0 0 5px rgba(0,0,0,.3);
+      }
+      
+      .content-body {
+        padding: 20px;
+      }
+    }
+  }
+  
+  .panel-right-open #app_wrapper .rightnav_v2 #rightnav {
+    right: 0;
+    z-index: $zindex_sidebar_panel_right;
+    background: #EEF5F9;
+  }
+}
+
+.rightnav_v2 {
+  #rightnav {
+    .header {
+      position: relative;
+      padding: 20px 15px;
+      	background: #e7eef3;
+      .header-title {
+        text-transform: uppercase;
+        padding: 5px 0 5px 10px;
+        display: block;
+        font-size: 18px;
+        font-weight: 300;
+      }
+    }
+    
+    .card-body {
+      padding: 0 !important;
+      
+      .submenu {
+        ul {
+          padding-right: 0;
+          margin-bottom: 0;
+          list-style: none;
+          
+          li {
+            position: relative;
+            display: block;
+            
+            a {
+              position: relative;
+              display: block;
+              padding: 0;
+              @include transition(all 250ms linear);
+              
+              &:hover {
+                color: #516073;
+              }
+              
+              i {
+                width: 10px;
+                font-size: 1.4em;
+                vertical-align: text-top;
+              }
+            }
+            
+            &:active,
+            &:focus,
+            &:hover {
+              background: rgba(200, 200, 200, 0.2);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// Open right Menus - Styles for v1
+// -----------------------------------------------------------------------------
+
+#content_wrapper.open-right,
+#content_wrapper.toggle-right {
+  &.rightnav_v1 {
+    #rightnav {
+      right: 0;
+    }
+  }
+}
+//when app menu is open and collapsed
+
+.app_sidebar-menu-collapsed {
+  #content_wrapper.open-right,
+	#content_wrapper.toggle-right  {
+    .rightnav_v1 {
+      #rightnav {
+        right: 50px;
+      }
+    }
+  }
+}
+
+#content_wrapper.open-right,
+#content_wrapper.toggle-right  {
+  &.rightnav_v1 {
+    #rightnav {
+      .card-heading,
+      .header {
+        position: relative;
+      padding: 20px 15px;
+        height: 70px;
+					background: #e7eef3;
+        .card-title,
+        .header-title {
+          text-transform: uppercase;
+          padding: 5px 0 5px 10px;
+          margin-top: 0;
+          display: block;
+          font-size: 18px;
+          font-weight: 300;
+  
+          line-height: 2em;
+        }
+      }
+    	background: #fff;
+      top: 65px;
+      position: fixed;
+			overflow-y: auto;
+      z-index: 80;
+      height: 100%;
+      right: 0;
+      
+      .card {
+        box-shadow: none;
+        
+        .header {
+          background: #e7eef3;
+        }
+      }
+    }
+  }
+}
+// layout-right-sidenav-v2.html
+// -----------------------------------------------------------------------------
+
+#content_wrapper {
+  &.rightnav_v2 {
+    margin-right: 250px;
+    @include transition(all 150ms linear);
+    
+    #rightnav {
+      width: 250px;
+      min-width: 250px;
+      max-width: 250px;
+      right: 0;
+      top: 65px;
+      height: 100%;
+      min-height: 100%;
+      position: fixed;
+			overflow-y: auto;
+      box-shadow: inset 3px 0 22px 2px rgba(0,0,0,.06);
+      color: #627288;
+      padding-right: 0;
+      @include transform(translateX(0px));
+      @include transition(all 150ms linear);
+      
+      .form-group {
+        margin: 0;
+      }
+			.card-heading,
+	    .header {
+
+	      position: relative;
+	      
+	      .card-title,
+	      .header-title {
+	        text-transform: uppercase;
+	       
+	        display: block;
+	
+	        margin: 0;
+	      }
+	    }
+	    
+	    .subheader {
+	      position: absolute;
+	      bottom: 0;
+	    }
+	    
+	    .sidebarnav-inner {
+	      height: calc(100% - 220px);
+	      overflow: auto;
+	      position: absolute;
+	      width: 100%;
+	      margin-top: 10px;
+	    }
+	    
+	    .card {
+	      background: transparent!important;
+	      border-color: transparent;
+	      box-shadow: none;
+	      margin: 0 auto !important;
+	      z-index: 0;
+	      
+	      .card-heading {
+	        padding: 15px 10px !important;
+	        background: #e7eef3;
+	        min-height: initial;
+	        
+	        h5 {
+	          color: rgba(98,114,136,.8);
+	          padding: 0;
+	          margin: 0;
+	          text-transform: uppercase;
+	        }
+	      }
+	      
+	      .card-body {
+	        padding: 0 !important;
+	        
+	        .submenu {
+	          ul {
+	            padding: 0;
+	            margin: 0;
+	            list-style: none;
+	            
+	            li {
+	              position: relative;
+	              display: block;
+	              
+	              a {
+	                position: relative;
+	                display: block;
+	                padding: 15px 15px 15px 25px;
+	                @include transition(all 250ms linear);
+	                
+	                &:hover {
+	                  color: #516073;
+	                }
+	                
+	                i {
+	                  width: 25px;
+	                  font-size: 1.4em;
+	                  vertical-align: text-top;
+	                  display: inline-block;
+	                }
+	              }
+	              
+	              &:active,
+	              &:focus,
+	              &:hover {
+	                background: rgba(200, 200, 200, 0.2);
+	                cursor: pointer;
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+    }
+  }
+}
+
+#content_wrapper.rightnav_v2 + #footer_wrapper {
+  margin-right: 250px;
+  @include transition(all 150ms linear);
+}
+// Open Right Menus - Styles for v2
+// -----------------------------------------------------------------------------
+
+#content_wrapper.open-right,
+#content_wrapper.toggle-right {
+  &.rightnav_v2 {
+    margin-right: 0;
+    
+    #rightnav {
+      -webkit-transform: translateX(250px);
+      -moz-transform: translateX(250px);
+      -ms-transform: translateX(250px);
+      -o-transform: translateX(250px);
+      transform: translateX(250px);
+    }
+  }
+}
+
+#content_wrapper.rightnav_v2.open-right + #footer_wrapper,
+#content_wrapper.rightnav_v2.toggle-right + #footer_wrapper {
+  margin-right: 0;
+  @include transition(all 150ms linear);
+}
+@media (max-width : 992px) {
+  #content_wrapper {
+    &.rightnav_v2 {
+      margin-right: 0;
+      @include transition(all 150ms linear);
+      
+      #rightnav {
+        @include transition(all 150ms linear);
+        -webkit-transform: translateX(250px);
+        -moz-transform: translateX(250px);
+        -ms-transform: translateX(250px);
+        -o-transform: translateX(250px);
+        transform: translateX(250px);
+        top: 60px;
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+        position: fixed!important;
+        overflow-y: auto!important;
+        height: 100%;
+        max-height: 100%;
+        padding-bottom: 60px;
+      }
+    }
+  }
+  
+  #content_wrapper.open-right,
+	  #content_wrapper.toggle-right {
+    &.rightnav_v2 {
+      overflow: hidden;
+      
+      #rightnav {
+        @include transition(all 150ms linear);
+        right: 0;
+        top: 60px;
+        padding-bottom: 60px;
+        background: #fff;
+        z-index: $zindex_toggle_sidebars;
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+        position: fixed!important;
+        overflow-y: auto!important;
+        height: 100%;
+        max-height: 100%;
+        @include transform(translateX(0px));
+        box-shadow: none;
+        
+        .card-heading.card-img {
+          display: block;
+        }
+      }
+    }
+  }
+  
+  #content_wrapper.rightnav_v2 + #footer_wrapper {
+    margin-right: 0;
+    @include transition(all 150ms linear);
+  }
+}
+@media (max-width : 767px) {
+  #content_wrapper.open-right,
+	  #content_wrapper.toggle-right  {
+    &.rightnav_v2 {
+      #rightnav {
+        @include transition(all 150ms linear);
+        width: 275px;
+        min-width: 275px;
+        max-width: 275px;
+      }
+    }
+  }
+}
+// layout-right-sidenav-v2 Wide Version
+// -----------------------------------------------------------------------------
+
+#content_wrapper {
+  &.rightnav_v2.lg {
+    margin-right: 360px;
+    
+    #rightnav {
+      width: 360px;
+      min-width: 360px;
+      max-width: 360px;
+      @include transform(translateX(0px));
+    }
+  }
+}
+
+#content_wrapper.open-right,
+#content_wrapper.toggle-right {
+  &.rightnav_v2.lg {
+    margin-right: 0;
+    
+    #rightnav {
+      -webkit-transform: translateX(360px);
+      -moz-transform: translateX(360px);
+      -ms-transform: translateX(360px);
+      -o-transform: translateX(360px);
+      transform: translateX(360px);
+    }
+  }
+}
+
+#content_wrapper.rightnav_v2.lg + #footer_wrapper {
+  margin-right: 360px;
+  @include transition(all 150ms linear);
+}
+
+#content_wrapper.rightnav_v2.open-right.lg + #footer_wrapper,
+#content_wrapper.rightnav_v2.toggle-right.lg + #footer_wrapper  {
+  margin-right: 0;
+  @include transition(all 150ms linear);
+}
+@media (max-width : 992px) {
+  #content_wrapper {
+    &.rightnav_v2.lg {
+      margin-right: 0;
+      
+      #rightnav {
+        @include transition(all 150ms linear);
+        -webkit-transform: translateX(360px);
+        -moz-transform: translateX(360px);
+        -ms-transform: translateX(360px);
+        -o-transform: translateX(360px);
+        transform: translateX(360px);
+      }
+    }
+  }
+  
+  #content_wrapper.open-right,
+	  #content_wrapper.toggle-right {
+    &.rightnav_v2.lg {
+      #rightnav {
+        @include transition(all 150ms linear);
+        @include transform(translateX(0px));
+      }
+    }
+  }
+  
+  #content_wrapper.rightnav_v2.lg + #footer_wrapper {
+    margin-right: 0;
+    @include transition(all 150ms linear);
+  }
+}
+@media (max-width: $screen-sm) {
+  #content_wrapper {
+    &.rightnav_v2.lg {
+      margin-right: 0;
+      
+      #rightnav {
+        width: 275px;
+        min-width: 275px;
+        max-width: 275px;
+        @include transition(all 150ms linear);
+        -webkit-transform: translateX(275px);
+        -moz-transform: translateX(275px);
+        -ms-transform: translateX(275px);
+        -o-transform: translateX(275px);
+        transform: translateX(275px);
+      }
+    }
+  }
+}
