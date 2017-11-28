@@ -1,9 +1,7 @@
-var nunjucks  = require('nunjucks');
-var express   = require('express');
-var path 			= require('path');
-var app       = express();
-
-app.listen(3012);
+const nunjucks  = require('nunjucks');
+const express   = require('express');
+const path 			= require('path');
+const app       = express();
 
 nunjucks.configure('app', {
   autoescape: true,
@@ -45,3 +43,5 @@ app.get('/signup', function(req, res) {
 app.get('/app', (req, res) => {
   res.render('admin/dist/index.html');
 });
+
+module.exports = app;
