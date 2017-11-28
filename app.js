@@ -34,6 +34,14 @@ app.get('/careers', function(req, res) {
   res.render('landing/careers.html');
 });
 
+app.get('/signin', function(req, res) {
+  res.render('landing/signin.html');
+});
+
+app.get('/signup', function(req, res) {
+  res.render('landing/signup.html');
+});
+
 app.get('/app', (req, res) => {
   res.render('admin/dist/index.html');
 });
