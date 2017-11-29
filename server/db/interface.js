@@ -29,8 +29,6 @@ function connectMongo() {
   });
 }
 
-
-
 module.exports = {
   connectMongo,
 };

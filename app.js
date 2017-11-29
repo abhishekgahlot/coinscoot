@@ -14,6 +14,7 @@ const app = express();
 
 const db = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
+const auth = require('./server/auth/auth');
 
 nunjucks.configure('app', {
   autoescape: true,
@@ -57,12 +58,40 @@ app.get('/signin', function(req, res) {
   res.render('landing/signin.html');
 });
 
+app.post('/signin', (req, res) => {
+  req.checkBody('email', 'Invalid postparam').notEmpty();
+  req.checkBody('password', 'Invalid postparam').notEmpty();
+  if (req.validationErrors()) {
+    res.json({ err: 'Invalid param' });
+    return;
+  }
+  auth.signin(req.body).then((data) => {
+    res.json({ auth: data });
+  }).catch((err) => {
+    res.json({ err });
+  });
+  return;
+});
+
 app.get('/signup', function(req, res) {
   res.render('landing/signup.html');
+});
+
+app.post('/signup', (req, res) => {
+  auth.signup(req.body).then((data) => {
+    res.json({ auth: data });
+  }).catch((err) => {
+    if (err === 'duplicate') {
+      res.json({ err });
+    } else {
+      res.json({ err });
+    }
+  });
 });
 
 app.get('/app', (req, res) => {
   res.render('admin/dist/index.html');
 });
+
 
 module.exports = app;
