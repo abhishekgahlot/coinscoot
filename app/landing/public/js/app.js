@@ -21,7 +21,7 @@ app.controller('loginForm', function($scope, $http) {
 });
 
 app.controller('signupForm', function($scope, $http) {
-    $scope.master = {fullname:"", email:"", password:""};
+    $scope.master = {fullName:"", email:"", password:""};
     $scope.reset = function() {
         $scope.user = angular.copy($scope.master);
     };
