@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral+SC');
+
 a.nav-button {
 	margin: 25px 9px;
     padding: 5px 10px;
@@ -10,4 +12,9 @@ a.nav-button {
 a.nav-button:hover {
 	background-color: #fff;
 	color: #000;
+}
+
+.navbar-brand, #logo {
+  font-family: 'Spectral SC', serif;
+  font-size: 23px !important;
 }
