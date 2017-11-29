@@ -26,7 +26,7 @@ app.controller('signupForm', function($scope, $http) {
         $scope.user = angular.copy($scope.master);
     };
     $scope.submitSignupForm = function () {
-        $http.post('/signup', { user:$scope.user }, config)
+        $http.post('/signup', { fullName: $scope.user.fullName, email: $scope.user.email, password: $scope.user.password }, config)
 	        .then(result => {
 	        	console.log(result);
 	        })
