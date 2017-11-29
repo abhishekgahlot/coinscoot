@@ -9,10 +9,13 @@
   <!-- stylesheets -->
   <link rel="stylesheet" type="text/css" href="landing/scss/bootstrap/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="landing/dist/login.theme.min.css">
+  <link rel="stylesheet" type="text/css" href="landing/dist/custom.css">
   
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="landing/js/app.js"></script>
 </head>
 <body class="session-page" data-gr-c-s-loaded="true">
   <div class="container">
@@ -20,26 +23,23 @@
       <a href="/" class="logo">
         CoinScoot
       </a>
-      <h4>Set up your new account today.</h4>
-      <p>
-        30-day money-back guarantee that starts after your first payment.
-      </p>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper" ng-app="myApp" ng-controller="signupForm">
+      <h5>Set up your new account today.</h5>
       <div class="formy">
-        <form role="form">
+        <form role="form" ng-submit="submitSignupForm()">
           <div class="form-group">
             <label for="name">Your name</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" ng-model="user.name">
           </div>
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" ng-model="user.email">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" ng-model="user.password">
           </div>
           <div class="checkbox">
             <label>
@@ -58,5 +58,5 @@
       <a href="/signin">Sign in here</a>
     </div>
   </div>
-
-</body></html>
+</body>
+</html>

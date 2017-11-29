@@ -23,3 +23,10 @@ a.nav-button:hover {
   font-family: 'Spectral SC', serif;
   font-size: 33px !important;
 }
+
+.wrapper>h5 {
+  color:#545e6a;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}

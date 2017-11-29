@@ -22,7 +22,7 @@ nunjucks.configure('app', {
 });
 
 app.use("/admin", express.static('app/admin'));
-app.use("/landing", express.static('app/landing'));
+app.use("/landing", express.static('app/landing/public'));
 
 app.use(bodyParser.json());
 app.use(expressValidator([]));
