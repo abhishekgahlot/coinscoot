@@ -12,9 +12,10 @@
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "connect-redis": "^3.3.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
-    "express-session": "^1.14.1",
     "expressjs": "^1.0.1",
     "mongodb": "^2.2.33",
     "nunjucks": "^3.0.1"

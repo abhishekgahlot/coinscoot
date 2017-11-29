@@ -1,7 +1,19 @@
-const nunjucks  = require('nunjucks');
-const express   = require('express');
-const path 			= require('path');
-const app       = express();
+const nunjucks = require('nunjucks');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const bluebird = require('bluebird');
+const RedisStore = require('connect-redis')(session);
+
+global.Promise = bluebird;
+
+const app = express();
+
+const db = require('./server/db/interface');
+const dbw = require('./server/db/wrapper').dbw;
 
 nunjucks.configure('app', {
   autoescape: true,
@@ -11,6 +23,15 @@ nunjucks.configure('app', {
 app.use("/admin", express.static('app/admin/public'))
 app.use("/landing", express.static('app/landing/public'))
 
+app.use(bodyParser.json());
+app.use(expressValidator([]));
+app.use(express.static('public'));
+app.use(cookieParser());
+app.use(session({ store: new RedisStore(),
+                  secret: 'ilovebitches',
+                  saveUninitialized: true,
+                  resave: true,
+                }));
 
 app.get('/', (req, res) => {
   res.render('landing/index.html');
