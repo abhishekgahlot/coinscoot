@@ -92,7 +92,7 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/app', (req, res) => {
-  res.render('admin/dist/index.html');
+  res.render('admin/index.html');
 });
 
 
