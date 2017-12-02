@@ -23,25 +23,25 @@ gulp.task('vendor', function(){
       })
       .pipe(jsFilter)
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest('../dist/assets/js'))
+      .pipe(gulp.dest('../js'))
       .pipe(rename('vendor.bundle.js'))
       .pipe(uglify())
-      .pipe(gulp.dest('../dist/assets/js'))
+      .pipe(gulp.dest('../js'))
       .pipe(jsFilter.restore)
       .pipe(cssFilter)
       .pipe(concat('vendor.css'))
-      .pipe(gulp.dest('../dist/assets/css'))
+      .pipe(gulp.dest('../css'))
       .pipe(rename('vendor.bundle.css'))
       .pipe(minifyCSS())
-      .pipe(gulp.dest('../dist/assets/css'))
+      .pipe(gulp.dest('../css'))
       .pipe(cssFilter.restore)
       .pipe(imgFilter)
       .pipe($.flatten())
-      .pipe(gulp.dest('../dist/assets/img'))
+      .pipe(gulp.dest('../img'))
       .pipe(imgFilter.restore)
       .pipe(fontsFilter)
       .pipe($.flatten())
-      .pipe(gulp.dest('../dist/assets/fonts'))
+      .pipe(gulp.dest('../fonts'))
       .on("error", errorAlert);
 });
 
@@ -50,19 +50,19 @@ gulp.task('sass', function () {
   return gulp.src('sass/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({includePaths: ['sass']}))
-    .pipe(gulp.dest('../dist/assets/css'))
+    .pipe(gulp.dest('../css'))
     .pipe(rename('app.bundle.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('../dist/assets/css'));
+    .pipe(gulp.dest('../css'));
 });
 
 gulp.task('themes', function () {
   return gulp.src('sass/themes/*')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({includePaths: ['sass/themes']}))
-    .pipe(gulp.dest('../dist/assets/css'))
+    .pipe(gulp.dest('../css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('../dist/assets/css'));
+    .pipe(gulp.dest('../css'));
 });
 
 gulp.task('watch', function () {

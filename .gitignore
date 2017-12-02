@@ -1,3 +1,7 @@
 node_modules
 .DS_Store
 package-lock.json
+app/admin/js
+app/admin/css
+app/admin/fonts
+app/admin/img
