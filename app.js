@@ -65,7 +65,8 @@ app.post('/signin', (req, res) => {
     res.json({ err: 'Invalid param' });
     return;
   }
-  auth.signin(req.body).then((data) => {
+  return auth.signin(req.body)
+  .then((data) => {
     res.json({ auth: data });
   }).catch((err) => {
     res.json({ err });
@@ -78,7 +79,8 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', (req, res) => {
-  auth.signup(req.body).then((data) => {
+  return auth.signup(req.body)
+  .then((data) => {
     res.json({ auth: data });
   }).catch((err) => {
     if (err === 'duplicate') {

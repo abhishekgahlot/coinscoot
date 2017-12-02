@@ -11,7 +11,7 @@ app.controller('loginForm', function($scope, $http, $window) {
     $scope.submitSigninForm = function () {
         $http.post('/signin', { email:$scope.user.email, password:$scope.user.password }, config)
             .then(result => {
-                if (result.auth) {
+                if (result.data.auth) {
                     $window.location.href = '/app';
                 }
             })
@@ -23,7 +23,7 @@ app.controller('loginForm', function($scope, $http, $window) {
 });
 
 app.controller('signupForm', function($scope, $http, $window) {
-    $scope.master = {fullName:"", email:"", password:"", aadhar:""};
+    $scope.master = {fullName:"", email:"", password:"", aadhar:"", otp:""};
     $scope.reset = function() {
         $scope.user = angular.copy($scope.master);
     };
@@ -35,7 +35,7 @@ app.controller('signupForm', function($scope, $http, $window) {
                                 otp: $scope.user.otp
                             }, config)
 	        .then(result => {
-                if (result.auth) {
+                if (result.data.auth) {
                     $window.location.href = '/app';
                 }
 	        })
