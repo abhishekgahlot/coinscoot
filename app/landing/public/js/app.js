@@ -2,7 +2,7 @@ const app = angular.module('myApp', []);
 
 let config = { headers: { 'Content-Type': 'application/json' } }
 
-app.controller('loginForm', function($scope, $http) {
+app.controller('loginForm', function($scope, $http, $window) {
     $scope.master = {email:"", password:""};
     $scope.reset = function() {
         $scope.user = angular.copy($scope.master);
@@ -11,7 +11,9 @@ app.controller('loginForm', function($scope, $http) {
     $scope.submitSigninForm = function () {
         $http.post('/signin', { email:$scope.user.email, password:$scope.user.password }, config)
             .then(result => {
-            	console.log(result);
+                if (result.auth) {
+                    $window.location.href = '/app';
+                }
             })
             .catch(err=>{
             	console.log(err);
@@ -20,15 +22,22 @@ app.controller('loginForm', function($scope, $http) {
 
 });
 
-app.controller('signupForm', function($scope, $http) {
-    $scope.master = {fullName:"", email:"", password:""};
+app.controller('signupForm', function($scope, $http, $window) {
+    $scope.master = {fullName:"", email:"", password:"", aadhar:""};
     $scope.reset = function() {
         $scope.user = angular.copy($scope.master);
     };
     $scope.submitSignupForm = function () {
-        $http.post('/signup', { fullName: $scope.user.fullName, email: $scope.user.email, password: $scope.user.password }, config)
+        $http.post('/signup', { fullName: $scope.user.fullName,
+                                email: $scope.user.email,
+                                password: $scope.user.password,
+                                aadhar: $scope.user.aadhar,
+                                otp: $scope.user.otp
+                            }, config)
 	        .then(result => {
-	        	console.log(result);
+                if (result.auth) {
+                    $window.location.href = '/app';
+                }
 	        })
 	        .catch(err=>{
 	        	console.log(err);
