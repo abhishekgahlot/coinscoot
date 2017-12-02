@@ -7,4 +7,8 @@ module.exports = {
   auth: {
   },
   saltRounds: 11,
+  ses : {
+    key: "AKIAINWOFAHAVCZ4BGVQ",
+    secret: "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"
+  }
 };
