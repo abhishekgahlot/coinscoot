@@ -7,7 +7,7 @@ module.exports = {
     app: ['js/material/material.js','js/material/ripples.js','js/initApp.js','js/app.js']
   },
   output: {
-    path: path.join(__dirname, "../dist/assets/js/"),
+    path: path.join(__dirname, "../js/"),
     filename: "[name].bundle.js"
   },
   resolve: {
