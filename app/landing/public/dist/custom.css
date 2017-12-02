@@ -16,7 +16,7 @@ a.nav-button:hover {
 
 .navbar-brand {
   font-family: 'Spectral SC', serif;
-  font-size: 23px !important;
+  font-size: 25px !important;
 }
 
 .logo {
@@ -29,4 +29,12 @@ a.nav-button:hover {
   text-align: center;
   padding: 10px;
   font-size: 20px;
+}
+
+.index-features-header {
+  background: url('../images/stock.jpg') !important;
+}
+
+.index-features-header:after {
+  background: rgba(58,71,90,.65);
 }

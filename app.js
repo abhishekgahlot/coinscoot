@@ -18,7 +18,8 @@ const auth = require('./server/auth/auth');
 
 nunjucks.configure('app', {
   autoescape: true,
-  express   : app
+	express   : app,
+	noCache: true
 });
 
 app.use("/admin", express.static('app/admin'));
