@@ -38,3 +38,11 @@ a.nav-button:hover {
 .index-features-header:after {
   background: rgba(58,71,90,.65);
 }
+
+.features .nav-link.active {
+  color: #1f7ef8 !important;
+}
+
+.index-features-nav .features .nav-link.active:after, .index-features-nav .features .nav-link:focus:after, .index-features-nav .features .nav-link:hover:after {
+  background: #1f7ef8 !important;
+}
