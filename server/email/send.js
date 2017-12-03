@@ -2,10 +2,11 @@ let ses = require('node-ses')
 const config = require('../../config');
 let client = ses.createClient({ key: config.ses.key, secret: config.ses.secret });
 
-let sendMail = (to, subject, message, altText="") => {
+let sendEmail = (to, subject, message, altText="") => {
     return new Promise((resolve, reject) => {
         client.sendEmail({
-            to: to
+            // to: to
+            to: "success@simulator.amazonses.com" //testing
             , from: 'support@coinscoot.com'
             , subject: subject
             , message: message

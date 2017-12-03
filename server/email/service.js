@@ -6,13 +6,20 @@ let sendWelcomeEmail = (to) => {
 
     return sendEmail(to, subject, message)
     .then((result) => {
-        if (condition) {
-            
+         return {
+             status : true,
+             message : `E-mail has been sent to ${to}`
+         }
+    })
+    .catch((err) => {
+        return {
+            status : false,
+            message : err.message
         }
     })
 }
 
 
 module.exports = {
-    sendEmail,
+    sendWelcomeEmail,
 };

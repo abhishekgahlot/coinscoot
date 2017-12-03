@@ -15,6 +15,7 @@ const app = express();
 const db = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
 const auth = require('./server/auth/auth');
+const EmailService = require("./server/email/service");
 
 nunjucks.configure('app', {
   autoescape: true,
@@ -82,6 +83,7 @@ app.get('/signup', function(req, res) {
 app.post('/signup', (req, res) => {
   return auth.signup(req.body)
   .then((data) => {
+    EmailService.sendWelcomeEmail(req.body.email);
     res.json({ auth: data });
   }).catch((err) => {
     if (err === 'duplicate') {
