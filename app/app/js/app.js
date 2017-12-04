@@ -83,7 +83,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     });
 }
 
-export const app = 'app';
+const app = 'app';
 
 const bodyTmpl = {
   template: require('../../partials/body.html'),
@@ -92,8 +92,7 @@ const bodyTmpl = {
   }
 };
 
-
-angular
+const angularApp = angular
   .module(app, ['ui.router'])
   .config(routesConfig)
   .component('app', bodyTmpl);
