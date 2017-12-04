@@ -69,7 +69,10 @@ app.post('/signin', (req, res) => {
   }
   return auth.signin(req.body)
   .then((data) => {
-    res.json({ auth: data });
+		if (data) {
+			req.session.email = req.body.email;
+		}
+		res.json({ auth: data });		
   }).catch((err) => {
     res.json({ err });
   });
@@ -98,5 +101,8 @@ app.get('/app', (req, res) => {
   res.render('app/index.html');
 });
 
+app.get('/session', (req, res) => {
+	res.json({ session: req.session.email });
+});
 
 module.exports = app;
