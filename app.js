@@ -23,7 +23,7 @@ nunjucks.configure('app', {
 	noCache: true
 });
 
-app.use("/admin", express.static('app/admin'));
+app.use("/app", express.static('app/'));
 app.use("/landing", express.static('app/landing/public'));
 
 app.use(bodyParser.json());
@@ -95,7 +95,7 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/app', (req, res) => {
-  res.render('admin/index.html');
+  res.render('app/index.html');
 });
 
 
