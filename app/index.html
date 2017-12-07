@@ -14,8 +14,7 @@
 	<link rel="stylesheet" href="/app/css/theme-a.css">
 	<base href="/app">
 </head>
-
-<body ng-app="app">
+<body ng-app="coinscoot">
 		<div id="app_wrapper">
 				<header id="app_topnavbar-wrapper">
 					<nav role="navigation" class="navbar topnavbar">
@@ -87,20 +86,20 @@
 							</div>
 							<ul class="nav nav-pills nav-stacked">
 								<li class="sidebar-header">NAVIGATION</li>
-								<li class="active"><a href="index.html"><i class="zmdi zmdi-view-dashboard"></i>Home</a></li>
-								<li><a href="index.html"><i class="zmdi zmdi-receipt"></i>Orders</a></li>								
-								<li><a href="index.html"><i class="zmdi zmdi-view-carousel"></i>Trade Rate</a></li>								
+								<li class="active"><a ui-sref="home" ui-sref-active="active"><i class="zmdi zmdi-view-dashboard"></i>Home</a></li>
+								<li><a ui-sref="orders" ui-sref-active="active"><i class="zmdi zmdi-receipt"></i>Orders</a></li>								
+								<li><a ui-sref="market" ui-sref-active="active"><i class="zmdi zmdi-view-carousel"></i>Trade Rate</a></li>								
 								<li class="nav-dropdown">
 									<a href="#"><span></span><i class="zmdi zmdi-balance-wallet"></i>Wallet</a>
 									<ul class="nav-sub">
-										<li><a href="layout-fullwidth-v1.html">Bitcoin Wallet</a></li>
-										<li><a href="layout-fullwidth-v2.html">Bitcoin Cash Wallet</a></li>
-										<li><a href="layout-fullwidth-v2.html">Ethereum Wallet</a></li>										
+										<li><a ui-sref="bitcoin" ui-sref-active="active">Bitcoin Wallet</a></li>
+										<li><a ui-sref="bitcoincash" ui-sref-active="active">Bitcoin Cash Wallet</a></li>
+										<li><a ui-sref="ether" ui-sref-active="active">Ethereum Wallet</a></li>										
 									</ul>
 								</li>
-								<li><a href="index.html"><i class="zmdi zmdi-swap-alt"></i>Exchange Currency</a></li>																								
-								<li><a href="index.html"><i class="zmdi zmdi-account"></i>Profile</a></li>																								
-								<li><a href="index.html"><i class="zmdi zmdi-settings"></i>Settings</a></li>																
+								<li><a ui-sref="exchange" ui-sref-active="active"><i class="zmdi zmdi-swap-alt"></i>Exchange Currency</a></li>																								
+								<li><a ui-sref="profile" ui-sref-active="active"><i class="zmdi zmdi-account"></i>Profile</a></li>																								
+								<li><a ui-sref="settings" ui-sref-active="active"><i class="zmdi zmdi-settings"></i>Settings</a></li>																
 							</ul>
 						</div>
 					</nav>

@@ -525,11 +525,6 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.app = undefined;
-	
 	var _appState = __webpack_require__(5);
 	
 	var _drawers = __webpack_require__(8);
@@ -594,28 +589,117 @@
 	  (0, _demo.swapLayoutMode)();
 	});
 	
-	//Routes 
-	/** @ngInject */
-	function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-	  $locationProvider.html5Mode(true).hashPrefix('!');
-	  $urlRouterProvider.otherwise('/');
+	var myApp = angular.module('coinscoot', ['ui.router']);
 	
-	  $stateProvider.state('app', {
-	    url: '/app/',
-	    component: 'app'
-	  });
-	}
+	myApp.config(function ($stateProvider) {
+	  var homeState = {
+	    name: 'home',
+	    url: '/home',
+	    template: __webpack_require__(13),
+	    controller: function controller($scope) {
+	      $scope.hello = 'Hello World!';
+	    }
+	  };
 	
-	var app = exports.app = 'app';
+	  var ordersState = {
+	    name: 'orders',
+	    url: '/orders',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
 	
-	var bodyTmpl = {
-	  template: __webpack_require__(16),
-	  controller: function controller() {
-	    this.hello = 'Hello World!';
-	  }
-	};
+	  var tradeState = {
+	    name: 'trade',
+	    url: '/trade',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
 	
-	angular.module(app, ['ui.router']).config(routesConfig).component('app', bodyTmpl);
+	  var bitcoinState = {
+	    name: 'bitcoin',
+	    url: '/bitcoin',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  var bitcoincashState = {
+	    name: 'bitcoincash',
+	    url: '/bitcoincash',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  var etherState = {
+	    name: 'ether',
+	    url: '/ether',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  var exchangeState = {
+	    name: 'exchange',
+	    url: '/exchange',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  var profileState = {
+	    name: 'profile',
+	    url: '/profile',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  var settingsState = {
+	    name: 'settings',
+	    url: '/settings',
+	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	  };
+	
+	  $stateProvider.state(homeState);
+	  $stateProvider.state(ordersState);
+	  $stateProvider.state(tradeState);
+	  $stateProvider.state(bitcoinState);
+	  $stateProvider.state(bitcoincashState);
+	  $stateProvider.state(etherState);
+	  $stateProvider.state(exchangeState);
+	  $stateProvider.state(profileState);
+	  $stateProvider.state(settingsState);
+	});
+	
+	// //Routes 
+	// /** @ngInject */
+	// function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+	//   $locationProvider.html5Mode(true).hashPrefix('!');
+	//   $urlRouterProvider.otherwise('/');
+	
+	//   $stateProvider
+	//     .state('app', {
+	//       url: '/app/',
+	//       component: 'app'
+	//     });
+	
+	//     $stateProvider
+	//       .state('newTempl', {
+	//         url: '/orders',
+	//         component: 'newTempl'
+	//       });
+	// }
+	
+	// const app = 'app';
+	
+	// const bodyTmpl = {
+	//   template: require('../../partials/body.html'),
+	//   controller() {
+	//     this.hello = 'Hello World!';
+	//   }
+	// };
+	
+	// const newTempl = {
+	//   template: require('../../partials/body.html'),
+	//   controller() {
+	//     this.hello = 'Hello aaaaa!';
+	//   }
+	// }
+	
+	// const angularApp = angular
+	//   .module(app, ['ui.router'])
+	//   .config(routesConfig)
+	//   .component('app', bodyTmpl)
+	//   .component('newTempl', newTempl);
 
 /***/ }),
 /* 5 */
@@ -1274,13 +1358,10 @@
 	exports.swapLayoutMode = swapLayoutMode;
 
 /***/ }),
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
+/* 13 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"card\">\n\t\t<header class=\"card-heading \">\n\t\t\t<h2 class=\"card-title\">Seed Project</h2>\n\t\t\t<small>Welcome to the MaterialLab Seed Project</small>\n\t\t\t<ul class=\"card-actions icons right-top\">\n\t\t\t\t<li>\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"refresh\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-refresh-alt\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t\t<li class=\"dropdown\">\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"dropdown\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-more-vert\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t\t<ul class=\"dropdown-menu btn-primary dropdown-menu-right\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option One</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Two</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Three</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</header>\n\t\t<div class=\"card-body\">\n\t\t\t<p>\n\t\t\t\tThis is a set of starter pages for your project. You can use these pages as a starting point to add only the components you need.\n\t\t\t</p>\n\t\t</div>\n\t</div>";
+	module.exports = "<div class=\"card\">\n\t\t<header class=\"card-heading \">\n\t\t\t<h2 class=\"card-title\">{{ hello }}</h2>\n\t\t\t<small>Welcome to the MaterialLab Seed Project</small>\n\t\t\t<ul class=\"card-actions icons right-top\">\n\t\t\t\t<li>\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"refresh\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-refresh-alt\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t\t<li class=\"dropdown\">\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"dropdown\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-more-vert\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t\t<ul class=\"dropdown-menu btn-primary dropdown-menu-right\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option One</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Two</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Three</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</header>\n\t\t<div class=\"card-body\">\n\t\t\t<p>\n\t\t\t\tThis is a set of starter pages for your project. You can use these pages as a starting point to add only the components you need.\n\t\t\t</p>\n\t\t</div>\n\t</div>";
 
 /***/ })
 /******/ ]);
