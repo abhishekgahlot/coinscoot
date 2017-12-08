@@ -5,16 +5,17 @@ let client = ses.createClient({ key: config.ses.key, secret: config.ses.secret }
 let sendEmail = (to, subject, message, altText="") => {
     return new Promise((resolve, reject) => {
         client.sendEmail({
-            // to: to
-            to: "success@simulator.amazonses.com" //testing
+            to: to
             , from: 'support@coinscoot.com'
             , subject: subject
             , message: message
             , altText: altText
         }, (err, data, res) => {
             if (err || !res) {
+                console.log(err)
                 reject(err || res);
             } else {
+                console.log(res)
                 resolve(res);
             }
         })
