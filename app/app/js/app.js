@@ -72,7 +72,9 @@ $(function() {
 
 var myApp = angular.module('coinscoot', ['ui.router']);
 
-myApp.config(function($stateProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+ // $locationProvider.html5Mode(true).hashPrefix('!');
+  $urlRouterProvider.otherwise('/');
   var homeState = {
     name: 'home',
     url: '/home',
@@ -85,7 +87,14 @@ myApp.config(function($stateProvider) {
   var ordersState = {
     name: 'orders',
     url: '/orders',
-    template: '<h3>Its the UI-Router hello world app!</h3>'
+    template: require('../../partials/_preloader.html'),
+    controller: function($scope, $location) {
+      $scope.hello = 'Hello World!';
+      $scope.isActive = function(route) {
+        console.log(route, $location.path());
+        return route === $location.path();
+      }
+    }
   }
 
   var tradeState = {
@@ -139,7 +148,11 @@ myApp.config(function($stateProvider) {
   $stateProvider.state(exchangeState);
   $stateProvider.state(profileState);
   $stateProvider.state(settingsState);
-});
+}).controller('Sidebar', ['$scope', '$location', function ($scope, $location) {
+  $scope.navClass = function (page) {
+    return page === ($location.path().substring(1) || '/') ? 'active' : '';
+  };
+}]);
 
 // //Routes 
 // /** @ngInject */

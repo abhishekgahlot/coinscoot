@@ -32,7 +32,7 @@ gulp.task('vendor', function(){
       .pipe(concat('vendor.css'))
       .pipe(gulp.dest('../css'))
       .pipe(rename('vendor.bundle.css'))
-      .pipe(minifyCSS())
+      .pipe(minifyCSS({ processImport: false }))
       .pipe(gulp.dest('../css'))
       .pipe(cssFilter.restore)
       .pipe(imgFilter)
@@ -52,7 +52,7 @@ gulp.task('sass', function () {
     .pipe(sass({includePaths: ['sass']}))
     .pipe(gulp.dest('../css'))
     .pipe(rename('app.bundle.css'))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({processImport: false}))
     .pipe(gulp.dest('../css'));
 });
 
@@ -61,7 +61,7 @@ gulp.task('themes', function () {
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({includePaths: ['sass/themes']}))
     .pipe(gulp.dest('../css'))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({processImport: false}))
     .pipe(gulp.dest('../css'));
 });
 

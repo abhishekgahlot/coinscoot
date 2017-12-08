@@ -86,7 +86,10 @@ app.get('/signup', function(req, res) {
 app.post('/signup', (req, res) => {
   return auth.signup(req.body)
   .then((data) => {
-    EmailService.sendWelcomeEmail(req.body.email);
+		EmailService.sendWelcomeEmail(req.body.email);
+		if (data) {
+			req.session.email = req.body.email;
+		}
     res.json({ auth: data });
   }).catch((err) => {
     if (err === 'duplicate') {
@@ -103,6 +106,11 @@ app.get('/app', (req, res) => {
 
 app.get('/session', (req, res) => {
 	res.json({ session: req.session.email });
+});
+
+app.get('/logout', (req, res) => {
+	req.session.destroy();	
+	res.redirect('/');
 });
 
 module.exports = app;

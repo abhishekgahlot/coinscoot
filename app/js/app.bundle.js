@@ -591,7 +591,9 @@
 	
 	var myApp = angular.module('coinscoot', ['ui.router']);
 	
-	myApp.config(function ($stateProvider) {
+	myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	  // $locationProvider.html5Mode(true).hashPrefix('!');
+	  $urlRouterProvider.otherwise('/');
 	  var homeState = {
 	    name: 'home',
 	    url: '/home',
@@ -604,7 +606,14 @@
 	  var ordersState = {
 	    name: 'orders',
 	    url: '/orders',
-	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	    template: __webpack_require__(14),
+	    controller: function controller($scope, $location) {
+	      $scope.hello = 'Hello World!';
+	      $scope.isActive = function (route) {
+	        console.log(route, $location.path());
+	        return route === $location.path();
+	      };
+	    }
 	  };
 	
 	  var tradeState = {
@@ -658,7 +667,11 @@
 	  $stateProvider.state(exchangeState);
 	  $stateProvider.state(profileState);
 	  $stateProvider.state(settingsState);
-	});
+	}).controller('Sidebar', ['$scope', '$location', function ($scope, $location) {
+	  $scope.navClass = function (page) {
+	    return page === ($location.path().substring(1) || '/') ? 'active' : '';
+	  };
+	}]);
 	
 	// //Routes 
 	// /** @ngInject */
@@ -1362,6 +1375,12 @@
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"card\">\n\t\t<header class=\"card-heading \">\n\t\t\t<h2 class=\"card-title\">{{ hello }}</h2>\n\t\t\t<small>Welcome to the MaterialLab Seed Project</small>\n\t\t\t<ul class=\"card-actions icons right-top\">\n\t\t\t\t<li>\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"refresh\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-refresh-alt\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t\t<li class=\"dropdown\">\n\t\t\t\t\t<a href=\"javascript:void(0)\" data-toggle=\"dropdown\">\n\t\t\t\t\t\t<i class=\"zmdi zmdi-more-vert\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t\t<ul class=\"dropdown-menu btn-primary dropdown-menu-right\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option One</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Two</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">Option Three</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</header>\n\t\t<div class=\"card-body\">\n\t\t\t<p>\n\t\t\t\tThis is a set of starter pages for your project. You can use these pages as a starting point to add only the components you need.\n\t\t\t</p>\n\t\t</div>\n\t</div>";
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"preloader pl-sm pls-pink\">\n  <svg class=\"pl-circular\" viewBox=\"25 25 50 50\">\n    <circle class=\"plc-path\" cx=\"50\" cy=\"50\" r=\"20\"></circle>\n  </svg>\n</div>\n";
 
 /***/ })
 /******/ ]);

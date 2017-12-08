@@ -36,12 +36,29 @@
 								</li>
 							</ul>
 							<ul class="nav navbar-nav pull-right">
-								<li>
+								<li style="display:none;">
 									<a href="javascript:void(0)" data-navsearch-open>
 										<i class="zmdi zmdi-search"></i>
 									</a>
 								</li>
-								<li class="last">
+								<li class="dropdown dropdown-lg app_menu_launcher">
+										<a href="javascript:void(0)" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+											<i class="zmdi zmdi-apps"></i>
+										<div class="ripple-container"></div></a>
+										<ul class="dropdown-menu dropdown-xs-menu dropdown-menu-right btn-primary p-30 text-center">
+											<li>
+												<ul>
+													<li><a ui-sref="profile" ui-sref-active="active"><i class="zmdi zmdi-account"></i><span>Profile</span></a></li>
+												</ul>
+											</li>
+											<li>
+												<ul>
+													<li><a href="/logout"><i class="zmdi zmdi-square-right"></i><span>Logout</span></a></li>
+												</ul>
+											</li>
+										</ul>
+								</li>
+								<li class="last" style="display:none;">
 									<a href="javascript:void(0)" data-toggle-state="sidebar-overlay-open" data-key="rightSideBar">
 										<i class="mdi mdi-playlist-plus"></i>
 									</a>
@@ -64,9 +81,9 @@
 								<header class="card-heading card-img alt-heading">
 									<div class="profile">
 										<header class="card-heading card-background" id="card_img_02">
-											<img src="admin/img/profiles/18.jpg" alt="" class="img-circle max-w-75">
+											<img src="" alt="" class="img-circle max-w-75">
 										</header>
-										<a href="javascript:void(0)" class="info" data-profile="open-menu"><span>admin@materiallab.pro</span></a>
+										<a href="javascript:void(0)" class="info" data-profile="open-menu"><span>admin@coinscoot.pro</span></a>
 									</div>
 								</header>
 								<ul class="submenu">
@@ -84,22 +101,22 @@
 									</li>
 								</ul>
 							</div>
-							<ul class="nav nav-pills nav-stacked">
+							<ul class="nav nav-pills nav-stacked" ng-controller="Sidebar">
 								<li class="sidebar-header">NAVIGATION</li>
-								<li class="active"><a ui-sref="home" ui-sref-active="active"><i class="zmdi zmdi-view-dashboard"></i>Home</a></li>
-								<li><a ui-sref="orders" ui-sref-active="active"><i class="zmdi zmdi-receipt"></i>Orders</a></li>								
-								<li><a ui-sref="market" ui-sref-active="active"><i class="zmdi zmdi-view-carousel"></i>Trade Rate</a></li>								
+								<li ng-class="navClass('home')"><a ui-sref="home" ui-sref-active="active"><i class="zmdi zmdi-view-dashboard"></i>Home</a></li>
+								<li ng-class="navClass('orders')"><a ui-sref="orders" ui-sref-active="active"><i class="zmdi zmdi-receipt"></i>Orders</a></li>								
+								<li ng-class="navClass('trade')"><a ui-sref="trade" ui-sref-active="active"><i class="zmdi zmdi-view-carousel"></i>Trade Rate</a></li>								
 								<li class="nav-dropdown">
 									<a href="#"><span></span><i class="zmdi zmdi-balance-wallet"></i>Wallet</a>
 									<ul class="nav-sub">
-										<li><a ui-sref="bitcoin" ui-sref-active="active">Bitcoin Wallet</a></li>
-										<li><a ui-sref="bitcoincash" ui-sref-active="active">Bitcoin Cash Wallet</a></li>
-										<li><a ui-sref="ether" ui-sref-active="active">Ethereum Wallet</a></li>										
+										<li ng-class="navClass('bitcoin')"><a ui-sref="bitcoin" ui-sref-active="active">Bitcoin Wallet</a></li>
+										<li ng-class="navClass('bitcoincash')"><a ui-sref="bitcoincash" ui-sref-active="active">Bitcoin Cash Wallet</a></li>
+										<li ng-class="navClass('ether')"><a ui-sref="ether" ui-sref-active="active">Ethereum Wallet</a></li>										
 									</ul>
 								</li>
-								<li><a ui-sref="exchange" ui-sref-active="active"><i class="zmdi zmdi-swap-alt"></i>Exchange Currency</a></li>																								
-								<li><a ui-sref="profile" ui-sref-active="active"><i class="zmdi zmdi-account"></i>Profile</a></li>																								
-								<li><a ui-sref="settings" ui-sref-active="active"><i class="zmdi zmdi-settings"></i>Settings</a></li>																
+								<li ng-class="navClass('exchange')"><a ui-sref="exchange" ui-sref-active="active"><i class="zmdi zmdi-swap-alt"></i>Exchange Currency</a></li>																								
+								<!-- <li><a ui-sref="profile" ui-sref-active="active"><i class="zmdi zmdi-account"></i>Profile</a></li>																								 -->
+								<li ng-class="navClass('settings')"><a ui-sref="settings" ui-sref-active="active"><i class="zmdi zmdi-settings"></i>Settings</a></li>																
 							</ul>
 						</div>
 					</nav>
