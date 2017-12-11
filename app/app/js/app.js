@@ -69,11 +69,10 @@ $(function() {
   swapLayoutMode();
 });
 
+var coinscootApp = angular.module('coinscoot', ['ui.router']);
 
-var myApp = angular.module('coinscoot', ['ui.router']);
-
-myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
- // $locationProvider.html5Mode(true).hashPrefix('!');
+coinscootApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  // $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/');
   var homeState = {
     name: 'home',
@@ -91,15 +90,14 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     controller: function($scope, $location) {
       $scope.hello = 'Hello World!';
       $scope.isActive = function(route) {
-        console.log(route, $location.path());
         return route === $location.path();
       }
     }
   }
 
-  var tradeState = {
-    name: 'trade',
-    url: '/trade',
+  var buySellState = {
+    name: 'buy-sell',
+    url: '/buy-sell',
     template: '<h3>Its the UI-Router hello world app!</h3>'
   }
 
@@ -130,28 +128,43 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   var profileState = {
     name: 'profile',
     url: '/profile',
-    template: '<h3>Its the UI-Router hello world app!</h3>'
+    template: require('../../partials/profile.html'),
+    controller: function($scope) {
+      $scope.title = 'Profile';
+      $scope.useremail = JSON.parse(window.coinscootuser).session;
+    }
   }
 
   var settingsState = {
     name: 'settings',
     url: '/settings',
-    template: '<h3>Its the UI-Router hello world app!</h3>'
+    template: require('../../partials/settings.html'),
   }
 
   $stateProvider.state(homeState);
   $stateProvider.state(ordersState);
-  $stateProvider.state(tradeState);
+  $stateProvider.state(buySellState);
   $stateProvider.state(bitcoinState);
   $stateProvider.state(bitcoincashState);
   $stateProvider.state(etherState);
   $stateProvider.state(exchangeState);
   $stateProvider.state(profileState);
   $stateProvider.state(settingsState);
-}).controller('Sidebar', ['$scope', '$location', function ($scope, $location) {
+}).controller('Sidebar', ['$scope', '$location','$http', function ($scope, $location, $http) {
+  
   $scope.navClass = function (page) {
     return page === ($location.path().substring(1) || '/') ? 'active' : '';
   };
+}]);
+
+coinscootApp.run(['$rootScope', '$http', function ($rootScope, $http) {
+  $http.get('/session').then((resp) => {
+    if ( Object.keys(resp.data).length === 0 ) {
+      window.location = "/";
+    } else {
+      window.coinscootuser = JSON.stringify(resp.data);
+    }
+  });
 }]);
 
 // //Routes 

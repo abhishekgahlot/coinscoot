@@ -589,9 +589,9 @@
 	  (0, _demo.swapLayoutMode)();
 	});
 	
-	var myApp = angular.module('coinscoot', ['ui.router']);
+	var coinscootApp = angular.module('coinscoot', ['ui.router']);
 	
-	myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	coinscootApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	  // $locationProvider.html5Mode(true).hashPrefix('!');
 	  $urlRouterProvider.otherwise('/');
 	  var homeState = {
@@ -610,15 +610,14 @@
 	    controller: function controller($scope, $location) {
 	      $scope.hello = 'Hello World!';
 	      $scope.isActive = function (route) {
-	        console.log(route, $location.path());
 	        return route === $location.path();
 	      };
 	    }
 	  };
 	
-	  var tradeState = {
-	    name: 'trade',
-	    url: '/trade',
+	  var buySellState = {
+	    name: 'buy-sell',
+	    url: '/buy-sell',
 	    template: '<h3>Its the UI-Router hello world app!</h3>'
 	  };
 	
@@ -649,28 +648,43 @@
 	  var profileState = {
 	    name: 'profile',
 	    url: '/profile',
-	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	    template: __webpack_require__(15),
+	    controller: function controller($scope) {
+	      $scope.title = 'Profile';
+	      $scope.useremail = JSON.parse(window.coinscootuser).session;
+	    }
 	  };
 	
 	  var settingsState = {
 	    name: 'settings',
 	    url: '/settings',
-	    template: '<h3>Its the UI-Router hello world app!</h3>'
+	    template: __webpack_require__(16)
 	  };
 	
 	  $stateProvider.state(homeState);
 	  $stateProvider.state(ordersState);
-	  $stateProvider.state(tradeState);
+	  $stateProvider.state(buySellState);
 	  $stateProvider.state(bitcoinState);
 	  $stateProvider.state(bitcoincashState);
 	  $stateProvider.state(etherState);
 	  $stateProvider.state(exchangeState);
 	  $stateProvider.state(profileState);
 	  $stateProvider.state(settingsState);
-	}).controller('Sidebar', ['$scope', '$location', function ($scope, $location) {
+	}).controller('Sidebar', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+	
 	  $scope.navClass = function (page) {
 	    return page === ($location.path().substring(1) || '/') ? 'active' : '';
 	  };
+	}]);
+	
+	coinscootApp.run(['$rootScope', '$http', function ($rootScope, $http) {
+	  $http.get('/session').then(function (resp) {
+	    if (Object.keys(resp.data).length === 0) {
+	      window.location = "/";
+	    } else {
+	      window.coinscootuser = JSON.stringify(resp.data);
+	    }
+	  });
 	}]);
 	
 	// //Routes 
@@ -1381,6 +1395,18 @@
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"preloader pl-sm pls-pink\">\n  <svg class=\"pl-circular\" viewBox=\"25 25 50 50\">\n    <circle class=\"plc-path\" cx=\"50\" cy=\"50\" r=\"20\"></circle>\n  </svg>\n</div>\n";
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div id=\"content_wrapper\">\n\t\t<div id=\"header_wrapper\" class=\"header-sm\">\n\t\t\t<div class=\"container-fluid\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t<header id=\"header\">\n\t\t\t\t\t\t\t<h1>{{ title }}</h1>\n\t\t\t\t\t\t</header>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"content\" class=\"container-fluid\">\n\t\t\t<div class=\"content-body\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t<div class=\"card\">\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<div class=\"card-body p-0\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"tabpanel\">\n\t\t\t\t\t\t\t\t\t\t\t<ul class=\"nav nav-tabs nav-justified\">\n\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"active\" role=\"presentation\"><a href=\"#tab-13\" data-toggle=\"tab\" aria-expanded=\"true\">General Settings</a></li>\n\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"tab-content p-20\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"tab-pane fadeIn active\" id=\"tab-13\">\n\t\t\t\t\t\t\t\t\t\t\t\t{{ useremail }}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<!-- ENDS $content -->\n\t</div>\n";
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div id=\"content_wrapper\">\n\t\t<div id=\"header_wrapper\" class=\"header-sm\">\n\t\t\t<div class=\"container-fluid\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t<header id=\"header\">\n\t\t\t\t\t\t\t<h1>{{ title }}</h1>\n\t\t\t\t\t\t</header>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"content\" class=\"container-fluid\">\n\t\t\t<div class=\"content-body\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t<div class=\"card\">\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<div class=\"card-body p-0\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"tabpanel\">\n\t\t\t\t\t\t\t\t\t\t\t<ul class=\"nav nav-tabs nav-justified\">\n\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"active\" role=\"presentation\"><a href=\"#tab-13\" data-toggle=\"tab\" aria-expanded=\"true\">General Settings</a></li>\n\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"tab-content p-20\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"tab-pane fadeIn active\" id=\"tab-13\">\n\t\t\t\t\t\t\t\t\t\t\t\t{{ useremail }}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<!-- ENDS $content -->\n\t</div>\n";
 
 /***/ })
 /******/ ]);
