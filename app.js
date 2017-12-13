@@ -37,7 +37,7 @@ app.use(session({ store: new RedisStore(),
                 }));
 
 app.get('/', (req, res) => {
-  res.render('landing/index.html');
+  res.render('landing/index-prev.html');
 });
 
 app.get('/contact', (req, res) => {
