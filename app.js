@@ -56,6 +56,10 @@ app.get('/careers', (req, res) => {
   res.render('landing/careers.html');
 });
 
+app.get('/blog', (req, res) => {
+  res.redirect('http://blog.coinscoot.com/');
+});
+
 app.get('/signin', (req, res) => {
   res.render('landing/signin.html');
 });

@@ -15370,12 +15370,6 @@ you can use the generic selector below, but it's slower:
 }
 .footer-big-menu .bottom {
   color: #68849a;
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 13px;
 }
 .footer-big-menu .bottom a {
   color: #68849a;
@@ -26554,6 +26548,7 @@ body {
 .about-2-hero {
   position: relative;
   padding-top: 130px;
+  background-color: #555888;
 }
 @media (max-width: 991px) {
   .about-2-hero {
@@ -26566,7 +26561,7 @@ body {
   }
 }
 .about-2-hero h1 {
-  color: #677284;
+  color: #adb1b7;
   font-weight: 300;
   width: 70%;
   line-height: 51px;
