@@ -91,10 +91,7 @@ app.post('/signup', (req, res) => {
   return auth.signup(req.body)
   .then((data) => {
 		EmailService.sendWelcomeEmail(req.body.email);
-		if (data) {
-			req.session.email = req.body.email;
-		}
-    res.json({ auth: data });
+    res.json(data);
   }).catch((err) => {
     if (err === 'duplicate') {
       res.json({ err });
@@ -102,6 +99,24 @@ app.post('/signup', (req, res) => {
       res.json({ err });
     }
   });
+});
+
+app.get('/activate/:activation_id', (req, res) => {
+  return auth.activate(req.params)
+    .then((data) => {
+      if (data.success) {
+        req.session.email = req.body.email;
+        res.redirect('/app');
+      } else {
+        res.json({error: "Invalid activation Id"})
+      }
+    }).catch((err) => {
+      if (err === 'duplicate') {
+        res.json({ err });
+      } else {
+        res.json(err);
+      }
+    });
 });
 
 app.get('/app', (req, res) => {

@@ -1,6 +1,10 @@
 const dbw = require('../db/wrapper').dbw;
 const bcrypt = require('bcrypt');
 const config = require('../../config');
+const { sendEmail } = require('../email/send');
+
+
+const uuid = require('uuid');
 
 function hashPass(password, rounds) {
   return new Promise((resolve, reject) => {
@@ -17,14 +21,24 @@ function signup(body) {
       fullName: body.fullName,
       email: body.email,
       password: body.password,
+      activated: false,
+      activation_id:uuid.v1(),
     };
-    hashPass(data.password, config.saltRounds).then((hash) => {
+    return hashPass(data.password, config.saltRounds).then((hash) => {
       data.password = hash;
       dbw.insert('users', data).then(() => {
-        resolve(true);
+        var message = "https://coinscoot.com/activate/"+data.activation_id
+        return sendEmail(data.email, "Activate account | CoinScoot", message, altText = "")
+        .then(()=>{
+          var result = {
+            success: true,
+            message : "Activation Email Sent. Please Activate"
+          }
+          resolve(result);
+        });
       }).catch((err) => {
         if (err.code === 11000) { // duplicate key
-          reject('duplicate');
+          reject('User Already exists.');
         } else {
           reject(err.code);
         }

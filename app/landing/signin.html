@@ -13,6 +13,8 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="landing/js/app.js"></script>
 </head>
 <body class="session-page" data-gr-c-s-loaded="true">
   <div class="container">
@@ -35,10 +37,13 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" ng-model="user.password">
           </div>
-          <div class="checkbox">
+          <!-- <div class="checkbox">
             <label>
                 <input type="checkbox"> Remember me
             </label>
+          </div> -->
+          <div class="form-group" ng-show="user.loginError">
+            <span class="alert alert-danger">[[ user.loginErrorMsg ]]</span>
           </div>
           <div class="text-center mt-4">
             <input type="submit" class="submit btn-block btn-shadow btn-shadow-info" value="Sign in">
@@ -51,7 +56,5 @@
       <a href="/signup">Create one here</a>
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="landing/js/app.js"></script>
 </body>
 </html>

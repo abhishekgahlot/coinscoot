@@ -6,7 +6,8 @@ function signin(body) {
   const password = body.password;
   return new Promise((resolve, reject) => {
     dbw.findOne('users', { email }).then((user) => {
-      if (!user) { reject(null); return; }
+      if (!user) { reject("Invalid Username/ Password"); return; }
+      if (!user.activated) { reject("Please activate your account."); return; }
       bcrypt.compare(password, user.password, (err, res) => {
         if (err || !res) {
           reject(err || res);

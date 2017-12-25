@@ -19,9 +19,12 @@ const dbw = {
     });
   },
 
-  update: (collection, data) => {
+  update: (collection, where, data) => {
     return new Promise((resolve, reject) => {
-      db.collection(collection).updateOne(data, (err, r) => {
+      var collection = db.collection(collection);
+      collection.updateOne(where, {
+        $set: data
+      }, (err, r) => {
         if (err) { reject(err); return; }
         resolve(r);
       });
